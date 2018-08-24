@@ -2,8 +2,8 @@
 function vacas(area){
     if(area.length > 0){
         var forraje = 6*area;
-        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deveria producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
-        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deveria producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
+        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
+        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
         
     }else{
         hablar("Ingrese por favor un numero");
