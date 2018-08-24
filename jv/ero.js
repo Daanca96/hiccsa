@@ -64,6 +64,7 @@ function consejo_h(){
     var x = getRandomInt(0,4);
 
     hablar(arreglo[x]);
+    swal(arreglo[x]);
 
 }
 
