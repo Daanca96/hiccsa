@@ -1,3 +1,4 @@
+
 function vacas(area){
     if(area.length != 0){
         var forraje = 6*area;
@@ -6,6 +7,7 @@ function vacas(area){
         
     }else
         hablar("Ingrese por favor un numero");
+        swal("Ingrese por favor un numero");
 } 
 
 
@@ -44,7 +46,7 @@ function concejos(){
     var x = getRandomInt(0,4);
 
     if (isMobile.mobilecheck() == true){
-        alert(arreglo[x]);
+        swal(arreglo[x]);
     }else{
     Push.create("Consejo",{
     body:arreglo[x],
@@ -82,18 +84,26 @@ var artyom = new Artyom();
 }
 
 function calcular_erosion(area,vacas){
+
+   if(area.length != 0 && vacas.length != 0){
+
   if(gasto(area) < vacas){
     hablar("Suelo propenso a sufrir erosiones");
-    alert("Suelo propenso a sufrir erosiones");
+    swal("Suelo propenso a sufrir erosiones");
   }else{
     hablar("el suelo no esta propenso a tener una erosion");
-    alert("el suelo no esta propenso a tener una erosion");
+    swal("el suelo no esta propenso a tener una erosion");
    }
+
+}else{
+    hablar("ingrese los datos por favor")
+   swal("ingrese los datos por favor");
 }
 
-function cerrar_web(){
-    Window.close();
+
 }
+
+
 
 
 

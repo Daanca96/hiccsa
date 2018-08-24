@@ -1,3 +1,4 @@
+
 function Cambiar(x) {
     "use strict";
     document.getElementById("HICCSA").style.display = "none";
