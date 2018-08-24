@@ -16,10 +16,8 @@
     <script src="jv/texto_voz/artyom.window.min.js"></script>    
     <script src="jv/voz_texto/annyang.min.js"></script>
     
-    <script type="text/javascript">
-    	
+    <script type="text/javascript">	
     window.onload = function(){
-
     hablar2('HICSA es una herramienta informática para el cuidado y control de suelos y animales, enfocada a personas con fines Agrícolas o ganaderas','e');
 
   Push.create("hola",{
@@ -55,6 +53,11 @@
                     hablar2('Hola, '+valor.substr((4-valor.length))+' yo soy Ana, mucho gusto');
                 }
                 else if (valor=='erosión') {hablar2('listo');Cambiar('Estudioe')}
+                else if (valor=='control') {hablar2('listo');Cambiar('Controlalimentos')}
+                else if (valor=='movimiento') {hablar2('listo');Cambiar('Movimiento')}
+                else if (valor=='consejo') {consejo_h();}
+                else if (valor=='cerrar') {hablar2('listo');cerrar_web();}
+                
 			}
 		};
 
@@ -125,6 +128,9 @@
        	<br> Ana cierra menu
        	<br> Ana Hola
        	<br> Ana soy "tu nombre"
+        <br> Ana control
+        <br> Ana movimiento
+        <br> Ana consejo
        	<br>
        	</h2> 
        </div>
