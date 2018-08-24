@@ -9,7 +9,7 @@ function Cambiar(x) {
     document.getElementById(x).style.display = "block";
 
     if (x=="Acerca"){
-        hablar2("Desarrolladores: Daniel Castro, David Cubillos y Cristian Monrroy")
+        hablar2("Desarrolladores: David Cubillos, Daniel Castro y Cristian Monrroy");
     } 
 }
 
