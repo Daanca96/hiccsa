@@ -47,7 +47,7 @@
 
 				console.log(valor);
 
-                if (valor=='Abre menú') {hablar2('contenido Ininio, concejo, erocion, control , acerca de'); document.getElementById("menu-bar").checked=true;}
+                if (valor=='Abre menú') {hablar2('contenido, Inicio, consejo, erosión , control , acerca de'); document.getElementById("menu-bar").checked=true;}
                 else if (valor=='Sierra menú') {hablar2('listo'); document.getElementById("menu-bar").checked=false;}
                 else if (valor=='Hola') {hablar2('hola');}
                 else if (valor.substr((valor.length*-2),3)=='soy'){
@@ -132,12 +132,31 @@
  <section style="margin-top:60px;" id="color">
         
        <center>  
-       		<h2 class="animated bounceInDown">Control Alimento para Rumiantes</h2>
+        <div style="background: rgba(0,0,0,0.5); width:80%; border-radius: 20px;">
+       		<h2 style="color: white" class="animated bounceInDown">Control Alimento para Rumiantes</h2>
        <table>
             <tr>
                <td style="width: 90%">
                 <input class="animated bounceInLeft" onkeypress="return check(event)" type="number" placeholder="area del terreno libre (m2)" id="area" name="usuario" >
-                
+
+                            <h2 style="color: white" class="animated bounceInLeft">Seleccione el piso térmico</h2>
+                            <select class="animated bounceInLeft" id="TipClima" class="estiloIn" onchange="selec(TipClima.value)">
+                                <option value="1" selected="">--- seleccione ---</option>
+                                <option value="2">Calido</option>
+                                <option value="3">Templado</option>
+                                <option value="4">Frio</option>
+                            </select>
+
+                        <label></label>
+                            <select class="animated bounceInRight" id="tipo" class="estiloIn">
+                                <option value="0" selected="0">--- seleccinar ---</option>
+                            </select>
+                            
+                            <h2 style="color: white" class="animated bounceInLeft">temporada en la que se encuentra</h2>
+                            <select class="animated bounceInLeft" id="tiempo" class="estiloIn" onclick="">
+                                <option id="true">Invierno</option>
+                                <option id="false">Verano</option>
+                            </select>
                </td>
             </tr>
                <tr>
@@ -146,6 +165,7 @@
                </td>
             </tr>
         </table>
+        </div>
        </center>  
      </section>     
 </div>  
