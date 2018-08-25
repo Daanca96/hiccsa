@@ -2,8 +2,8 @@
 function vacas(area){
     if(area.length > 0){
         var forraje = 6*area;
-        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
-        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje");
+        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
+        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
         
     }else{
         hablar("Ingrese por favor un numero");
@@ -26,9 +26,26 @@ function ver(Estado){
     }
 }
 
+function calcular_erosion(area,vacas){
+   if(area.length != 0 && vacas.length != 0){
+
+  if(gasto(area) < vacas){
+    hablar("El suelo es propenso a Erosión por Posada de vaca, " + vacas_reco);
+    swal("Suelo propenso a sufrir Erosiónes "+vacas_reco);
+  }else{
+    hablar("el suelo no esta propenso a tener una Erosión");
+    swal("el suelo no esta propenso a tener una Erosión");
+   }
+}else{
+    hablar("ingrese los datos por favor")
+   swal("ingrese los datos por favor");
+}
+}
+var vacas_reco ;
 function gasto(area){
     var a =area/8.333;  /* 8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg */
     console.log("La cantidad de vacas es de: "+parseInt(a/30));
+    vacas_reco = "cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: " + parseInt(a/30);
     return parseInt(a/30);
 }
 
@@ -44,16 +61,16 @@ function formatoKG(x,e){
 //new Intl.NumberFormat("de-DE").format(number)
 
 function concejos(){
-    var x = getRandomInt(0,4);
-
+    var x = getRandomInt(0,18);
+    hablar(arreglo[x]);
     if (isMobile.mobilecheck() == true){
         swal(arreglo[x]);
     }else{
     Push.create("Consejo",{
     body:arreglo[x],
     icon:"img/logo2.ico",
-    timeout: 4000,
-  onclick: function(){
+    timeout: 9000,
+    onclick: function(){
     this.close();
 
   }
@@ -62,7 +79,7 @@ function concejos(){
 }
 
 function consejo_h(){
-    var x = getRandomInt(0,4);
+    var x = getRandomInt(0,18);
 
     hablar(arreglo[x]);
     swal(arreglo[x]);
@@ -73,9 +90,26 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var arreglo = ['Recuerda rotar los cultivos periodicamente','Recuerda rotar el ganado entre los diferentes segmentos de pasto','Recuerda revisar el estado del terreno\n\
-                 frecuentemente en busca de posible erosion en la superficie', 'Recuerda gestionar el uso de plaguicidad y herbicidas correctamente',
-                    'Evita el uso de plaguicidas y herbicidas cerca de fuentes hidricas'];
+var arreglo = ['Recuerda rotar los cultivos periodicamente',
+               'Recuerda rotar el ganado entre los diferentes segmentos de pasto',
+               'Recuerda revisar el estado del terreno frecuentemente en busca de posible erosion en la superficie',
+               'Recuerda gestionar el uso de plaguicidad y herbicidas correctamente',
+               'Evita el uso de plaguicidas y herbicidas cerca de fuentes hidricas',
+               'Ten el número de teléfono de su veterinario a la mano en caso de emergencia.',
+               'Los toros y vacas con crías pueden ser peligrosos.',
+               'El estrés aumenta en los bovinos durante el invierno por las dificultades para dormir, la falta de poderse echar en la noche y por la cantidad de barro. Eso hace que bajen las defensas y el peso',
+               'fincas encharcadas, se hacen frecuentes las enfermedades podales, y los animales no se pueden acostar, ni alimentar bien.',
+               'alimentos como el silo de maíz, los subproductos como las harinas de arroz o de maíz, los residuos de panadería o el glicerol representan aportes significativos a los animales',
+               'Haz que el ternero reciba sus vacunas de antibióticos disponibles en las tiendas de comida para animales',
+               'Los terneros deben alimentarse siguiendo un horario controlado de 3 a 5 comidas pequeñas al día.',
+               'Esteriliza el equipo y límpialo bien luego de cada uso. Las bacterias pueden desarrollarse en los residuos de calostro y leche en los biberones, lo que puede enfermar gravemente al ternero.',
+               'La inseminación artificial solo tiene 60 a 70% de éxito. Cuanto más sea la tecnología que utilices mas éxito tendrás.',
+               'Permite que la lactancia de la vaca dure 10 meses al año. Esto es para que le des dos meses libres antes de del parto',
+               'una vaca puede ponerse un poco sobre protectora con su cría luego de haber dado a luz, así que ten mucho cuidado.',
+               'No mantengas ningún becerro de tus primeras novillas de primer parto. No son tan buenos becerros como los del segundo parto en adelante.',
+               'Evita tener un semental lo menos posible. La inseminación fue inventada para disminuir costos y el peligro del manejo del semental.',
+               'El ganado en áreas secas está en riesgo de enfermarse de neumonía o fiebre de embarque, acidosis, pie negro',
+               ];
 
 
 function hablar(z){
@@ -85,25 +119,7 @@ var artyom = new Artyom();
     });
 }
 
-function calcular_erosion(area,vacas){
 
-   if(area.length != 0 && vacas.length != 0){
-
-  if(gasto(area) < vacas){
-    hablar("Suelo propenso a sufrir erosiones");
-    swal("Suelo propenso a sufrir erosiones");
-  }else{
-    hablar("el suelo no esta propenso a tener una erosion");
-    swal("el suelo no esta propenso a tener una erosion");
-   }
-
-}else{
-    hablar("ingrese los datos por favor")
-   swal("ingrese los datos por favor");
-}
-
-
-}
 
 
 
