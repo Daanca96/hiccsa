@@ -15,12 +15,12 @@ function vacas(area,dias,planta){
     if(area.length != 0){
         if(dias > 0){
         var forraje = 6*area;
-        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
+        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+" m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
                 " de forraje("+planta+") en "+dias+" dias");
         swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
                 " de forraje("+planta+") en "+dias+" dias");
         }else
-            swal("El tipo de pasto: "+planta+" no crese en esa temporada")
+            swal("El tipo de pasto: "+planta+" no crese en esa temporada");
     }else
         hablar("Ingrese por favor un numero");
         swal("Ingrese por favor un numero");
