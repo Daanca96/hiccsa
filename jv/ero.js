@@ -21,9 +21,10 @@ function vacas(area,dias,planta){
                 " de forraje("+planta+") en "+dias+" dias");
         }else
             swal("El tipo de pasto: "+planta+" no crese en esa temporada");
-    }else
+    }else{
         hablar("Ingrese por favor un numero");
         swal("Ingrese por favor un numero");
+    }
 } 
 
 
