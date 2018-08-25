@@ -235,7 +235,8 @@ function recupera(temporada,planta,clima,area){
     
     switch(clima){
         case '1':
-            alert("Seleccione un piso termico y el tipo de pasto");
+            hablar("Seleccione un piso termico y el tipo de pasto");
+            swal("Seleccione un piso termico y el tipo de pasto");
             break;
             
         case '2':
@@ -253,23 +254,24 @@ function recupera(temporada,planta,clima,area){
 }
 
 
-function hot(planta, temporada){
+ function hot(planta, temporada){
     var salida = 0;
     for(i = 0;i < calido.length;i++){
         
                 if(planta === calido[i].nombre && temporada === 'Invierno')
                         salida = calido[i].Invierno;
                 else    /* else de temporada de invierno */
-                    if(calido[i].Verano === 0)
+                    if(planta === calido[i].nombre && calido[i].Verano === 0)
                         salida = -1;
                        else /* else para saber si crece en verano */
-                           if(calido[i].mas){
+                           if(planta === calido[i].nombre && calido[i].mas){
                          salida = calido[i].Verano;
                                break;
                            }
                            
             }
-    return salida;
+    console.log("sale: "+salida);
+    return salida;    
 }
 
 function med(planta, temporada){
@@ -279,10 +281,10 @@ function med(planta, temporada){
                 if(planta === templado[i].nombre && temporada === 'Invierno')
                         salida = templado[i].Invierno;
                 else    /* else de temporada de invierno */
-                    if(templado[i].Verano === 0)
+                    if(planta === templado[i].nombre && templado[i].Verano === 0)
                         salida = -1;
                        else /* else para saber si crece en verano */
-                           if(templado[i].mas){
+                           if(planta === templado[i].nombre && templado[i].mas){
                          salida = templado[i].Verano;
                                break;
                            }
@@ -298,10 +300,10 @@ function fri(planta, temporada){
                 if(planta === frio[i].nombre && temporada === 'Invierno')
                         salida = frio[i].Invierno;
                 else    /* else de temporada de invierno */
-                    if(frio[i].Verano === 0)
+                    if(planta === frio[i].nombre && frio[i].Verano === 0)
                         salida = -1;
                        else /* else para saber si crece en verano */
-                           if(frio[i].mas){
+                           if(planta === frio[i].nombre && frio[i].mas){
                          salida = frio[i].Verano;
                                break;
                            }
