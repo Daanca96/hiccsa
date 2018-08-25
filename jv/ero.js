@@ -1,16 +1,14 @@
 
 function vacas(area){
     if(area.length > 0){
-        var forraje = 6*area;
+        var forraje = 6*area;   //6 cantidad de forraje q produce un m2
         hablar("La cantidad maxima recomendada de vacas es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
-        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
-        
+        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");        
     }else{
         hablar("Ingrese por favor un numero");
         swal("Ingrese por favor un numero");
     }
 } 
-
 
 function diasCo(cantidad,gasto){
     return cantidad/gasto;
