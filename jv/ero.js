@@ -1,5 +1,5 @@
 
-function vacas(area){
+/*function vacas(area){
     if(area.length > 0){
         var forraje = 6*area;   //6 cantidad de forraje q produce un m2
         hablar("La cantidad maxima recomendada de vacas es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
@@ -8,7 +8,24 @@ function vacas(area){
         hablar("Ingrese por favor un numero");
         swal("Ingrese por favor un numero");
     }
+} */
+
+
+function vacas(area,dias,planta){
+    if(area.length != 0){
+        if(dias > 0){
+        var forraje = 6*area;
+        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
+                " de forraje("+planta+") en "+dias+" dias");
+        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
+                " de forraje("+planta+") en "+dias+" dias");
+        }else
+            swal("El tipo de pasto: "+planta+" no crese en esa temporada")
+    }else
+        hablar("Ingrese por favor un numero");
+        swal("Ingrese por favor un numero");
 } 
+
 
 function diasCo(cantidad,gasto){
     return cantidad/gasto;
@@ -40,11 +57,18 @@ function calcular_erosion(area,vacas){
 }
 }
 var vacas_reco ;
-function gasto(area){
-    var a =area/8.333;  /* 8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg */
+/*function gasto(area){
+    var a =area/8.333;   8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg 
     console.log("La cantidad de vacas es de: "+parseInt(a/30));
     vacas_reco = "cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: " + parseInt(a/30);
     return parseInt(a/30);
+} */
+
+function gasto(area,dias){
+    var a =area/8.333;/* 8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg */
+    console.log("La cantidad de vacas es de: "+parseInt(a/30));
+    vacas_reco = "cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: " + parseInt(a/30);
+    return parseInt(a/dias);
 }
 
 function formatoKG(x,e){
@@ -205,6 +229,86 @@ function agregar(clima){
 }
 
 
+//---------------------------------nuevo  25 / 08 / 2018
+function recupera(temporada,planta,clima,area){
+    var salida = 0;
+    
+    switch(clima){
+        case '1':
+            alert("Seleccione un piso termico y el tipo de pasto");
+            break;
+            
+        case '2':
+            vacas(area,hot(planta,temporada),planta);
+            break;
+            
+        case '3':
+            vacas(area,med(planta,temporada),planta);
+            break;
+            
+        case '4':
+            vacas(area,fri(planta,temporada),planta);
+            break;
+    }
+}
+
+
+function hot(planta, temporada){
+    var salida = 0;
+    for(i = 0;i < calido.length;i++){
+        
+                if(planta === calido[i].nombre && temporada === 'Invierno')
+                        salida = calido[i].Invierno;
+                else    /* else de temporada de invierno */
+                    if(calido[i].Verano === 0)
+                        salida = -1;
+                       else /* else para saber si crece en verano */
+                           if(calido[i].mas){
+                         salida = calido[i].Verano;
+                               break;
+                           }
+                           
+            }
+    return salida;
+}
+
+function med(planta, temporada){
+    var salida = 0;
+    for(i = 0;i < templado.length;i++){
+        
+                if(planta === templado[i].nombre && temporada === 'Invierno')
+                        salida = templado[i].Invierno;
+                else    /* else de temporada de invierno */
+                    if(templado[i].Verano === 0)
+                        salida = -1;
+                       else /* else para saber si crece en verano */
+                           if(templado[i].mas){
+                         salida = templado[i].Verano;
+                               break;
+                           }
+                           
+            }
+    return salida;
+}
+
+function fri(planta, temporada){
+    var salida = 0;
+    for(i = 0;i < frio.length;i++){
+        
+                if(planta === frio[i].nombre && temporada === 'Invierno')
+                        salida = frio[i].Invierno;
+                else    /* else de temporada de invierno */
+                    if(frio[i].Verano === 0)
+                        salida = -1;
+                       else /* else para saber si crece en verano */
+                           if(frio[i].mas){
+                         salida = frio[i].Verano;
+                               break;
+                           }
+                           
+            }
+    return salida;
+}
 
 //es telefono?
 var isMobile = {
