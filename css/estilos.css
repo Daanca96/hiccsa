@@ -108,7 +108,7 @@ section{
 .menu li:hover {background: rgba(0,0,0,0.3); } 
 
 .sub1{
-    background: rgba(187, 153, 255,0.9);
+    background: rgba(153, 102, 255,0.9);
 }
 
 
@@ -309,26 +309,7 @@ input[type="radio"]:checked + label:before{
     height: 200px;
 	cursor: pointer;
 }
-/*--------------------------------------------------------------*/
-/*#txtclave{
-	display: block;
-	padding: 10px;
-	width: 100%;
-	margin: 30px 0;
-    font-size: 20px;
-}
-#btningresar{
-	display: block;
-	padding: 10px;
-	width: 100%;
-	margin: 30px 0;
-    font-size: 20px;
-	background: #1edfe4;
-	cursor: pointer;
-	border-radius: 20px;
-	opacity: 0.8;
-	color: #fff;
-}*/
+
 input[type="submit"]:hover{
 opacity: 1;
 }
@@ -373,10 +354,6 @@ opacity: 1;
 		overflow:hidden; 
 	}
   
-
-
-
-
 
 
 
