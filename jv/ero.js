@@ -1,21 +1,8 @@
-
-/*function vacas(area){
-    if(area.length > 0){
-        var forraje = 6*area;   //6 cantidad de forraje q produce un m2
-        hablar("La cantidad maxima recomendada de vacas es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");
-        swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+" de forraje cada 35 Días");        
-    }else{
-        hablar("Ingrese por favor un numero");
-        swal("Ingrese por favor un numero");
-    }
-} */
-
-
 function vacas(area,dias,planta){
     if(area.length != 0){
         if(dias > 0){
         var forraje = 6*area;
-        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+" m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
+        hablar("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+" metros cuadrados la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
                 " de forraje("+planta+") en "+dias+" dias");
         swal("La cantidad maxima recomendada de vacas, es de: "+gasto(area,dias)+" en un area de: "+area+"m² la cual deberia producir una cantidad de: "+formatoKG(forraje,true)+
                 " de forraje("+planta+") en "+dias+" dias");
@@ -27,27 +14,17 @@ function vacas(area,dias,planta){
     }
 } 
 
-
-function diasCo(cantidad,gasto){
+/*
+function diasCo(cantidad,gasto){ 
     return cantidad/gasto;
-}
-
-function ver(Estado){
-    if(Estado){
-        console.log("Ver");
-        document.getElementById("Calculo").style.display = "block";
-    }else{
-        console.log("ocultar");
-        document.getElementById("Calculo").style.display = "none";  
-    }
-}
+}*/
 
 function calcular_erosion(area,vacas){
    if(area.length != 0 && vacas.length != 0){
 
   if(gasto(area) < vacas){
-    hablar("El suelo es propenso a Erosión por Posada de vaca, " + vacas_reco);
-    swal("Suelo propenso a sufrir Erosiónes "+vacas_reco);
+    hablar("El suelo es propenso a Erosión por Posada de vaca, cantidad recomendada de vacas de un peso aproximado de 450 kilo gramos en esta area es de:  " + vacas_reco);
+    swal("Suelo propenso a sufrir Erosiónes, cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: "+vacas_reco);
   }else{
     hablar("el suelo no esta propenso a tener una Erosión");
     swal("el suelo no esta propenso a tener una Erosión");
@@ -58,17 +35,10 @@ function calcular_erosion(area,vacas){
 }
 }
 var vacas_reco ;
-/*function gasto(area){
-    var a =area/8.333;   8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg 
-    console.log("La cantidad de vacas es de: "+parseInt(a/30));
-    vacas_reco = "cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: " + parseInt(a/30);
-    return parseInt(a/30);
-} */
-
 function gasto(area,dias){
     var a =area/8.333;/* 8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg */
     console.log("La cantidad de vacas es de: "+parseInt(a/30));
-    vacas_reco = "cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: " + parseInt(a/30);
+    vacas_reco = parseInt(a/30);
     return parseInt(a/dias);
 }
 
@@ -103,10 +73,8 @@ function concejos(){
 
 function consejo_h(){
     var x = getRandomInt(0,18);
-
     hablar(arreglo[x]);
     swal(arreglo[x]);
-
 }
 
 function getRandomInt(min, max) {
@@ -134,18 +102,12 @@ var arreglo = ['Recuerda rotar los cultivos periodicamente',
                'El ganado en áreas secas está en riesgo de enfermarse de neumonía o fiebre de embarque, acidosis, pie negro',
                ];
 
-
 function hablar(z){
 var artyom = new Artyom();
     artyom.say(z,{
     lang:"es-ES",
     });
 }
-
-
-
-
-
 //-------------------------------------------------------
 function selec(valor){
     limpiar();
@@ -168,10 +130,8 @@ function selec(valor){
             var option = document.createElement("option");
             option.text = templado[i].nombre;
             x.add(option);  
-            }
-             
-            break;
-            
+            }             
+           break;
         case '4':
             console.log("Clima frio");
             agregar(4);
@@ -203,9 +163,7 @@ function subir(nombre, invierno, verano, mas){
 }
 
 var calido = [];
-
 var templado = [];
-
 var frio = [];
 
 function agregar(clima){
@@ -216,12 +174,10 @@ function agregar(clima){
                       subir('Buffel', 35, 65, false), subir('Estrella', 46, 0, false), subir('Pangola', 37, 0, false), subir('Gordura', 45, 45, true), subir('Alemán', 45,45, true),
                       subir('Pará', 37, 42, true), subir('Elefante', 50, 0, false), subir('King Grass', 45,0,false), subir('Guatemala', 42,84,false), subir('Calopo', 45,0,false), 
                       subir('Clitoria o campanilla', 40,60,false), subir('Pega pega', 37,60,), subir('Soya perenne', 37,0,false), subir('Kudzu tropical', 60, 120, false)];
-            break;
-            
+            break;            
         case 3:
             templado = [subir('Micay', 72, 72, true)];
             break;
-            
         case 4:
             frio = [subir('Raigrases anuales', 32, 40, true), subir('Raigrases perennes', 35,40,true), subir('Azul Orchoro', 38, 0, false), subir('Festuca alta', 28, 42, false), 
                     subir('Festuca media', 37, 0, false), subir('Kikuyo', 42, 63, false)];
@@ -229,11 +185,9 @@ function agregar(clima){
     }
 }
 
-
 //---------------------------------nuevo  25 / 08 / 2018
 function recupera(temporada,planta,clima,area){
-    var salida = 0;
-    
+    var salida = 0;    
     switch(clima){
         case '1':
             hablar("Seleccione un piso termico y el tipo de pasto");
@@ -254,7 +208,6 @@ function recupera(temporada,planta,clima,area){
     }
 }
 
-
  function hot(planta, temporada){
     var salida = 0;
     for(i = 0;i < calido.length;i++){
@@ -268,8 +221,7 @@ function recupera(temporada,planta,clima,area){
                            if(planta === calido[i].nombre && calido[i].mas){
                          salida = calido[i].Verano;
                                break;
-                           }
-                           
+                           }                          
             }
     console.log("sale: "+salida);
     return salida;    
@@ -289,7 +241,6 @@ function med(planta, temporada){
                          salida = templado[i].Verano;
                                break;
                            }
-                           
             }
     return salida;
 }
@@ -308,7 +259,6 @@ function fri(planta, temporada){
                          salida = frio[i].Verano;
                                break;
                            }
-                           
             }
     return salida;
 }
