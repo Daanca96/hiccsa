@@ -22,7 +22,7 @@ function diasCo(cantidad,gasto){
 function calcular_erosion(area,vacas){
    if(area.length != 0 && vacas.length != 0){
 
-  if(gasto(area) < vacas){
+  if(gasto(area,30) < vacas){
     hablar("El suelo es propenso a Erosión por Posada de vaca, cantidad recomendada de vacas de un peso aproximado de 450 kilo gramos en esta area es de:  " + vacas_reco);
     swal("Suelo propenso a sufrir Erosiónes, cantidad recomendada de vacas de un peso aproximado de 450kg en esta area es de: "+vacas_reco);
   }else{
@@ -37,8 +37,8 @@ function calcular_erosion(area,vacas){
 var vacas_reco ;
 function gasto(area,dias){
     var a =area/8.333;/* 8.333 area aproximada de produccion de comida para una vaca de aprimadamente de 450kg */
-    console.log("La cantidad de vacas es de: "+parseInt(a/30));
-    vacas_reco = parseInt(a/30);
+    console.log("La cantidad de vacas es de: "+parseInt(a/dias));
+    vacas_reco = parseInt(a/dias);
     return parseInt(a/dias);
 }
 
@@ -195,71 +195,36 @@ function recupera(temporada,planta,clima,area){
             break;
             
         case '2':
-            vacas(area,hot(planta,temporada),planta);
+            vacas(area,mucho(calido,planta,temporada),planta);
             break;
             
         case '3':
-            vacas(area,med(planta,temporada),planta);
+            vacas(area,mucho(templado,planta,temporada),planta);
             break;
             
         case '4':
-            vacas(area,fri(planta,temporada),planta);
+            vacas(area,mucho(frio,planta,temporada),planta);
             break;
     }
 }
 
- function hot(planta, temporada){
+ function mucho(arreglo, planta, temporada){
     var salida = 0;
-    for(i = 0;i < calido.length;i++){
-        
-                if(planta === calido[i].nombre && temporada === 'Invierno')
-                        salida = calido[i].Invierno;
-                else    /* else de temporada de invierno */
-                    if(planta === calido[i].nombre && calido[i].Verano === 0)
-                        salida = -1;
-                       else /* else para saber si crece en verano */
-                           if(planta === calido[i].nombre && calido[i].mas){
-                         salida = calido[i].Verano;
-                               break;
-                           }                          
-            }
-    console.log("sale: "+salida);
-    return salida;    
-}
-
-function med(planta, temporada){
-    var salida = 0;
-    for(i = 0;i < templado.length;i++){
-        
-                if(planta === templado[i].nombre && temporada === 'Invierno')
-                        salida = templado[i].Invierno;
-                else    /* else de temporada de invierno */
-                    if(planta === templado[i].nombre && templado[i].Verano === 0)
-                        salida = -1;
-                       else /* else para saber si crece en verano */
-                           if(planta === templado[i].nombre && templado[i].mas){
-                         salida = templado[i].Verano;
-                               break;
-                           }
-            }
-    return salida;
-}
-
-function fri(planta, temporada){
-    var salida = 0;
-    for(i = 0;i < frio.length;i++){
-        
-                if(planta === frio[i].nombre && temporada === 'Invierno')
-                        salida = frio[i].Invierno;
-                else    /* else de temporada de invierno */
-                    if(planta === frio[i].nombre && frio[i].Verano === 0)
-                        salida = -1;
-                       else /* else para saber si crece en verano */
-                           if(planta === frio[i].nombre && frio[i].mas){
-                         salida = frio[i].Verano;
-                               break;
-                           }
-            }
+    for(i = 0;i < arreglo.length;i++){
+        if(planta === arreglo[i].nombre){
+            if(temporada === 'Invierno')
+                salida = arreglo[i].Invierno;
+            else
+                if(0 === arreglo[i].Verano)
+                    salida = -1;
+            else
+                if(arreglo[i].mas){
+                    salida = arreglo[i].Verano;
+                    break;
+                }
+        }
+    }
+    console.log("es: "+salida);
     return salida;
 }
 
