@@ -115,33 +115,27 @@ function selec(valor){
         case '2':
             agregar(2);
             console.log("Clima calido");
-            for(i = 0;i < calido.length;i++){
-            var x = document.getElementById("tipo");
-            var option = document.createElement("option");
-            option.text = calido[i].nombre;
-            x.add(option);  
-            }
+            subirLis();
             break;
         case '3':
             agregar(3);
             console.log("Clima templado");
-            for(i = 0;i < templado.length;i++){
-            var x = document.getElementById("tipo");
-            var option = document.createElement("option");
-            option.text = templado[i].nombre;
-            x.add(option);  
-            }             
+           subirLis();             
            break;
         case '4':
             console.log("Clima frio");
             agregar(4);
-            for(i = 0;i < frio.length;i++){
-            var x = document.getElementById("tipo");
-            var option = document.createElement("option");
-            option.text = frio[i].nombre;
-            x.add(option);  
-            }
+            subirLis();
             break;
+    }
+}
+
+function subirLis(){
+    for(i = 0;i < arr.length;i++){
+        var x = document.getElementById("tipo");
+        var option = document.createElement("option");
+        option.text = arr[i].nombre;
+        x.add(option);
     }
 }
 
@@ -162,24 +156,22 @@ function subir(nombre, invierno, verano, mas){
     //templado = [planta];
 }
 
-var calido = [];
-var templado = [];
-var frio = [];
+var arr = new Array();
 
 function agregar(clima){
     console.log(clima);
     switch (clima){
         case 2:
-            calido = [subir('Guinea',40,45,true), subir('Puntero, Faragua, Yaraguá, Uribe', 38, 80, false), subir('Angleton', 40, 60, false), subir('Braquiaria', 40,45, true),
+            arr = [subir('Guinea',40,45,true), subir('Puntero, Faragua, Yaraguá, Uribe', 38, 80, false), subir('Angleton', 40, 60, false), subir('Braquiaria', 40,45, true),
                       subir('Buffel', 35, 65, false), subir('Estrella', 46, 0, false), subir('Pangola', 37, 0, false), subir('Gordura', 45, 45, true), subir('Alemán', 45,45, true),
                       subir('Pará', 37, 42, true), subir('Elefante', 50, 0, false), subir('King Grass', 45,0,false), subir('Guatemala', 42,84,false), subir('Calopo', 45,0,false), 
                       subir('Clitoria o campanilla', 40,60,false), subir('Pega pega', 37,60,), subir('Soya perenne', 37,0,false), subir('Kudzu tropical', 60, 120, false)];
             break;            
         case 3:
-            templado = [subir('Micay', 72, 72, true)];
+            arr = [subir('Micay', 72, 72, true)];
             break;
         case 4:
-            frio = [subir('Raigrases anuales', 32, 40, true), subir('Raigrases perennes', 35,40,true), subir('Azul Orchoro', 38, 0, false), subir('Festuca alta', 28, 42, false), 
+            arr = [subir('Raigrases anuales', 32, 40, true), subir('Raigrases perennes', 35,40,true), subir('Azul Orchoro', 38, 0, false), subir('Festuca alta', 28, 42, false), 
                     subir('Festuca media', 37, 0, false), subir('Kikuyo', 42, 63, false)];
              break;
     }
@@ -195,15 +187,15 @@ function recupera(temporada,planta,clima,area){
             break;
             
         case '2':
-            vacas(area,mucho(calido,planta,temporada),planta);
+            vacas(area,mucho(arr,planta,temporada),planta);
             break;
             
         case '3':
-            vacas(area,mucho(templado,planta,temporada),planta);
+            vacas(area,mucho(arr,planta,temporada),planta);
             break;
             
         case '4':
-            vacas(area,mucho(frio,planta,temporada),planta);
+            vacas(area,mucho(arr,planta,temporada),planta);
             break;
     }
 }
