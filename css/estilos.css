@@ -8,7 +8,8 @@ body{
     -moz-user-select: none;
     -khtml-user-select: none;
     -ms-user-select:none;
-    background-image: url("nature.jpg");
+    /*background-image: url("nature.jpg");*/
+    background: rgb(242, 242, 242);
 }
 
 header{
