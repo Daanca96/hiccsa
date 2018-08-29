@@ -5,22 +5,24 @@
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="img/logo.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-	<link rel="stylesheet"  href="css/estilos.css">
+	  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+	  <link rel="stylesheet"  href="css/estilos.css">
     <link rel="stylesheet" href="css/animate.css"/> 
+    
     <script src="jv/java.js"></script>
+    <script src="jv/aforo.js"></script>
+    <script src="jv/consejos.js"></script>
+    <script src="jv/erosion.js"></script>
+
     <script src="jv/push.min.js"></script>
     <script src="jv/jquery.min.js"></script>
     <script src="jv/texto_voz/artyom.window.js"></script>
-    <script src="jv/ero.js"></script>
     <script src="jv/texto_voz/artyom.window.min.js"></script>    
     <script src="jv/voz_texto/annyang.min.js"></script>
-
     <script src="jv/sweetalert.min.js"></script>
     
     <script type="text/javascript">	
     window.onload = function(){
-    hablar2('HICSA es una herramienta informática para el cuidado y control de suelos y animales, enfocada a personas con fines Agrícolas o ganaderas','e');
 
   Push.create("hola",{
 	body:"se recomienda la utilizacion del navegador Chrome",
@@ -36,7 +38,7 @@
 	icon:"img/logo2.ico",
 	timeout: 7000,
   onclick: function(){
-    this.close();
+  this.close();
   }
 });
 
@@ -52,7 +54,7 @@
                 else if (valor=='Hola') {hablar2('hola');}
                 else if (valor.substr((valor.length*-2),3)=='soy'){
                 	console.log(valor.length+' '+(valor.length*-2)); 
-                    hablar2('Hola, '+valor.substr((4-valor.length))+' yo soy Ana, mucho gusto');
+                  hablar2('Hola, '+valor.substr((4-valor.length))+' yo soy Ana, mucho gusto');
                 }
                 else if (valor=='erosión') {hablar2('listo');Cambiar('Estudioe')}
                 else if (valor=='control') {hablar2('listo');Cambiar('Controlalimentos')}
@@ -105,11 +107,11 @@
 	
 <article>
        
- <div class="animated swing" id="HICCSA" style="margin-top:60px;display:block;margin-bottom: 60px;">
+ <div class="animated swing" id="HICCSA" style="margin-top:60px;display:block;margin-bottom: 10px;">
        <center>
         <img src="img/logo.png" style="max-width:100%;width:auto;height:auto;">    
 
-        <img src="img/fusa.jpg" style="max-width:100%;width:auto;height:auto;"> 
+        <!--<img src="img/fusa.jpg" style="max-width:100%;width:auto;height:auto;"> -->
   
        <div style="background: rgba(0,0,0,0.5); width:80%; border-radius: 20px; " >
        	<h2  id="verb" style="color: white">herramientas informáticas para el cuidado y control de suelos y animales.
@@ -133,7 +135,7 @@
         
        <center>  
         <div style="background: rgba(0,0,0,0.5); width:80%; border-radius: 20px;">
-       		<h2 style="color: white" class="animated bounceInDown">Control Alimento para Rumiantes</h2>
+       		<h2 style="color: white" class="animated bounceInDown">AFORO</h2>
        <table>
             <tr>
                <td style="width: 90%">
