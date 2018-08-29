@@ -1,6 +1,6 @@
 function concejos(){
     var x = getRandomInt(0,18);
-    hablar(arreglo_consejo[x]);
+    hablar2(arreglo_consejo[x]);
     if (isMobile.mobilecheck() == true){
         swal(arreglo_consejo[x]);
     }else{
